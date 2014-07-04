@@ -9,7 +9,7 @@ Tools used are:
 * [Silex](http://silex.sensiolabs.org)
 * [Bootstrap 3](http://getbootstrap.com/)
 
-![Index creation](phpclient_demo.png "Index creation")
+![Index creation](clientphp_demo.png "Index creation")
 
 
 # Prerequisite
