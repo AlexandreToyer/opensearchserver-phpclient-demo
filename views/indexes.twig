@@ -1,0 +1,128 @@
+{% extends '_layout.twig' %}
+    
+{% block content %}
+{% include '_nav.twig' with {'active_indexes' : 'active' } %}
+    <div class="navbar navbar-default navbar-fixed-top subnav" role="navigation">
+      <div class="container">
+        <div class="">
+          <ul class="nav nav-pills" role="tablist">
+              <li class="active"><a href="#list" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-list"></span> List of indexes <span class="badge">{{ indexesList|length }}</span></a></li>
+              <li><a href="#create" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> Create index</a></li>
+              <li><a href="#delete" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-trash"></span> Delete index</a></li>
+              <li><a href="#exists" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-ok"></span> Check if exists</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container" id="whole">
+        <div>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="list">
+                <h4>Code snippet</h4>
+                    <span class="label label-info">Index\GetList - <a href="https://github.com/jaeksoft/opensearchserver-php-client#get-list-of-index-on-an-instance" onclick="return !window.open(this.href);">Documentation</a></span><br/><br/>
+<pre  class="prettyprint lang-php">
+$request = new OpenSearchServer\Index\GetList();
+$response = $oss_api->submit($request);
+foreach($response as $key => $item) {
+    echo '&lt;br/&gt;Item #'.$key .': ';
+    print_r($item);
+}
+</pre>  
+              
+              <div class="results">
+                
+                <h4>Result</h4>
+                    <table class="table table-striped table-limited">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for index in indexesList %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ index }}</td>
+                            </tr>            
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              
+              <div class="tab-pane" id="create">
+                <h4>Code snippet</h4>
+                    <span class="label label-info">Index\Create - <a href="https://github.com/jaeksoft/opensearchserver-php-client#create-an-empty-index" onclick="return !window.open(this.href);">Documentation</a></span><br/><br/>
+<pre  class="prettyprint lang-php">
+$request = new OpenSearchServer\Index\Create();
+$request->index('00__test_file')
+        ->template(OpenSearchServer\Request::TEMPLATE_FILE_CRAWLER);
+$response = $oss_api->submit($request);
+</pre>  
+              
+                  <div class="results">
+                    <h4>Test</h4>
+                        <form class="form-inline" action="{{ path('new_index') }}" role="form">
+                          <div class="form-group">
+                            {{ form_label(formCreate.name, 'Name') }}
+                            {{ form_widget(formCreate.name, {'attr': {'class': 'form-control'}}) }}
+                          </div>
+                          <div class="form-group">
+                            {{ form_label(formCreate.type, 'Template') }}
+                            {{ form_widget(formCreate.type, {'attr': {'class': 'form-control'}}) }}
+                          </div>
+                          <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                  </div>  
+              </div>
+              
+              <div class="tab-pane" id="delete">
+                <h4>Code snippet</h4>
+                    <span class="label label-info">Index\Delete - <a href="https://github.com/jaeksoft/opensearchserver-php-client#delete-an-index" onclick="return !window.open(this.href);">Documentation</a></span><br/><br/>
+<pre  class="prettyprint lang-php">
+$request = new OpenSearchServer\Index\Delete();
+$request->index('index_name');
+$response = $oss_api->submit($request);
+</pre>  
+              
+                  <div class="results">
+                    <h4>Test</h4>
+                        <form class="form-inline" action="{{ path('delete_index') }}" role="form">
+                          <div class="form-group">
+                            {{ form_label(formDelete.name, 'Name') }}
+                            {{ form_widget(formDelete.name, {'attr': {'class': 'form-control'}}) }}
+                          </div>
+                          <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                  </div>  
+              </div>
+              
+              <div class="tab-pane" id="exists">
+                <h4>Code snippet</h4>
+                    <span class="label label-info">Index\Exists - <a href="https://github.com/jaeksoft/opensearchserver-php-client#check-if-an-index-exists" onclick="return !window.open(this.href);">Documentation</a></span><br/><br/>
+<pre  class="prettyprint lang-php">
+$request = new OpenSearchServer\Index\Exists();
+$request->index('index_name');
+$response = $oss_api->submit($request);
+</pre>  
+              
+                  <div class="results">
+                    <h4>Test</h4>
+                        <form class="form-inline" action="{{ path('check_index') }}" role="form">
+                          <div class="form-group">
+                            {{ form_label(formExists.name, 'Name') }}
+                            {{ form_widget(formExists.name, {'attr': {'class': 'form-control'}}) }}
+                          </div>
+                          <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                  </div>  
+              </div>
+              
+            </div>
+            
+        </div>
+    </div><!-- /.container -->
+{% endblock %}

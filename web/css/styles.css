@@ -1,0 +1,10 @@
+body { padding-top: 50px; }
+#whole { padding: 60px 15px; }
+.subnav { margin-top:51px; padding:5px;}
+header { text-align:center; }
+.tab-content { margin:20px 0 0 0; }
+.label a { color:white; text-decoration:underline; }
+.label a:hover { text-decoration:none; }
+.results { margin:20px 0 0 0; padding:10px 0 0 0; border-top:1px solid #ebebeb; }
+.results-call { margin-top:10px; }
+.results-call pre { vertical-align:top; display:inline-block; margin-left:20px;}
