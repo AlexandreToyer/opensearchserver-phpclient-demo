@@ -1,18 +1,18 @@
 OpenSearchServer PHP Client - demo app
 ======================================
 
-This app demonstrates a way to work with OpenSearchServer PHP Client.
+This app demonstrates a way to work with some features of OpenSearchServer PHP Client.
 
 **Tools used are:**
 
 * [OpenSearchServer PHP client](https://github.com/jaeksoft/opensearchserver-php-client)
-* [Silex](http://silex.sensiolabs.org)
-* [Bootstrap 3](http://getbootstrap.com/)
+* [Silex](http://silex.sensiolabs.org) and [Twig](http://twig.sensiolabs.org/)
+* [Bootstrap 3](http://getbootstrap.com/) and [jQuery](http://jquery.com/)
+* [Google Code Prettify](https://code.google.com/p/google-code-prettify/) for code highlighting
 
 **Example of a page:**
 
 ![Index creation](clientphp_demo.png "Index creation")
-
 
 # Prerequisite
 
